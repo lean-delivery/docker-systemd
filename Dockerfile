@@ -23,6 +23,8 @@ RUN yum makecache fast && yum update -y && \
     touch /etc/sysconfig/network && \    
     localedef -f UTF-8 -i en_US en_US.UTF-8
 
+STOPSIGNAL SIGRTMIN+3
+
 VOLUME [ "/sys/fs/cgroup" ]
 
 ENTRYPOINT ["/usr/sbin/init"]

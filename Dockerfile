@@ -2,7 +2,7 @@ FROM centos:7
 
 LABEL maintainer="team@lean-delivery.com"
 
-ENV container docker \
+ENV container=docker \
     LANG=en_US.UTF-8 \
     LC_ALL=en_US.UTF-8 \
     TERM=xterm

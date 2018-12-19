@@ -24,6 +24,8 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     localedef -f UTF-8 -i en_US en_US.UTF-8
 
+RUN cp /bin/true /sbin/agetty
+
 STOPSIGNAL SIGRTMIN+3
 
 VOLUME [ "/sys/fs/cgroup" ]

@@ -88,6 +88,3 @@ jobs:
         run: |
           docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
           docker image ls
-          echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-          docker push $DOCKERHUB_URL:$TAG
-          docker logout

@@ -21,7 +21,7 @@ RUN apt-get update && \
     apt-get install -y software-properties-common && \
     add-apt-repository --yes ppa:fkrull/deadsnakes
 
-RUN INSTALL_PKGS="python3.5 sudo bash apt-utils locales iproute2 locales ca-certificates dbus gnupg systemd" && \
+RUN INSTALL_PKGS="python3.5 python3-apt sudo bash apt-utils locales iproute2 locales ca-certificates dbus gnupg systemd" && \
     apt-get install -y $INSTALL_PKGS && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \

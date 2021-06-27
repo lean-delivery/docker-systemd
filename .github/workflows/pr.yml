@@ -1,0 +1,22 @@
+---
+name: CI
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+env:
+  DOCKERHUB_URL: leandelivery/docker-systemd
+  DOCKERHUB_USERNAME: leandeliveryrobot
+jobs:
+  centos-7:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Build
+        env:
+          TAG: centos7
+        run: |
+          docker build -t $DOCKERHUB_URL:$TAG Dockerfile-$TAG
+          docker image ls

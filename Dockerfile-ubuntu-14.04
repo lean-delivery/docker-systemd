@@ -17,12 +17,11 @@ RUN find /etc/systemd/system \
     -not -name '*systemd-user-sessions*' \
     -print0 | xargs -0 rm -vf
 
-RUN apt-get install software-properties-common
-
-RUN add-apt-repository --yes ppa:fkrull/deadsnakes
-
 RUN apt-get update && \
-    INSTALL_PKGS="python3.5 sudo bash apt-utils locales iproute2 locales ca-certificates dbus gnupg systemd" && \
+    apt-get install software-properties-common && \
+    add-apt-repository --yes ppa:fkrull/deadsnakes
+
+RUN INSTALL_PKGS="python3.5 sudo bash apt-utils locales iproute2 locales ca-certificates dbus gnupg systemd" && \
     apt-get install -y $INSTALL_PKGS && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \

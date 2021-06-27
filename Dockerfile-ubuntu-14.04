@@ -18,7 +18,7 @@ RUN find /etc/systemd/system \
     -print0 | xargs -0 rm -vf
 
 RUN apt-get update && \
-    apt-get install software-properties-common && \
+    apt-get install -y software-properties-common && \
     add-apt-repository --yes ppa:fkrull/deadsnakes
 
 RUN INSTALL_PKGS="python3.5 sudo bash apt-utils locales iproute2 locales ca-certificates dbus gnupg systemd" && \

@@ -1,8 +1,9 @@
 ---
 name: CI
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - master
 env:
   DOCKERHUB_URL: leandelivery/docker-systemd
   DOCKERHUB_USERNAME: leandeliveryrobot
@@ -20,6 +21,9 @@ jobs:
         run: |
           docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
           docker image ls
+          echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+          docker push $DOCKERHUB_URL:$TAG
+          docker logout
   centos8:
     runs-on: ubuntu-latest
     steps:
@@ -33,6 +37,9 @@ jobs:
         run: |
           docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
           docker image ls
+          echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+          docker push $DOCKERHUB_URL:$TAG
+          docker logout
   ubuntu-14_04:
     runs-on: ubuntu-latest
     steps:
@@ -46,6 +53,9 @@ jobs:
         run: |
           docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
           docker image ls
+          echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+          docker push $DOCKERHUB_URL:$TAG
+          docker logout
   ubuntu-16_04:
     runs-on: ubuntu-latest
     steps:
@@ -59,6 +69,9 @@ jobs:
         run: |
           docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
           docker image ls
+          echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+          docker push $DOCKERHUB_URL:$TAG
+          docker logout
   ubuntu-18_04:
     runs-on: ubuntu-latest
     steps:
@@ -72,6 +85,9 @@ jobs:
         run: |
           docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
           docker image ls
+          echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+          docker push $DOCKERHUB_URL:$TAG
+          docker logout
   ubuntu-20_04:
     runs-on: ubuntu-latest
     steps:
@@ -85,3 +101,6 @@ jobs:
         run: |
           docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
           docker image ls
+          echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+          docker push $DOCKERHUB_URL:$TAG
+          docker logout

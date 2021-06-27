@@ -18,5 +18,5 @@ jobs:
         env:
           TAG: centos7
         run: |
-          docker build -t $DOCKERHUB_URL:$TAG Dockerfile-$TAG
+          docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
           docker image ls

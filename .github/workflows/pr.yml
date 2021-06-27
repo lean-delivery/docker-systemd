@@ -33,7 +33,7 @@ jobs:
         run: |
           docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
           docker image ls
-  ubuntu-14.04:
+  ubuntu-14_04:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -46,7 +46,7 @@ jobs:
         run: |
           docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
           docker image ls
-  ubuntu-16.04:
+  ubuntu-16_04:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -59,7 +59,7 @@ jobs:
         run: |
           docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
           docker image ls
-  ubuntu-18.04:
+  ubuntu-18_04:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -72,7 +72,7 @@ jobs:
         run: |
           docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
           docker image ls
-  ubuntu-20.04:
+  ubuntu-20_04:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

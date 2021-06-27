@@ -7,7 +7,7 @@ env:
   DOCKERHUB_URL: leandelivery/docker-systemd
   DOCKERHUB_USERNAME: leandeliveryrobot
 jobs:
-  centos-7:
+  centos7:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -17,6 +17,71 @@ jobs:
       - name: Build
         env:
           TAG: centos7
+        run: |
+          docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
+          docker image ls
+  centos8:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Build
+        env:
+          TAG: centos8
+        run: |
+          docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
+          docker image ls
+  ubuntu-14.04:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Build
+        env:
+          TAG: ubuntu-14.04
+        run: |
+          docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
+          docker image ls
+  ubuntu-16.04:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Build
+        env:
+          TAG: ubuntu-16.04
+        run: |
+          docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
+          docker image ls
+  ubuntu-18.04:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Build
+        env:
+          TAG: ubuntu-18.04
+        run: |
+          docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
+          docker image ls
+  ubuntu-20.04:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Build
+        env:
+          TAG: ubuntu-20.04
         run: |
           docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
           docker image ls

@@ -17,6 +17,8 @@ RUN find /etc/systemd/system \
     -not -name '*systemd-user-sessions*' \
     -print0 | xargs -0 rm -vf
 
+RUN apt-get install software-properties-common
+
 RUN add-apt-repository --yes ppa:fkrull/deadsnakes
 
 RUN apt-get update && \

@@ -24,22 +24,6 @@ jobs:
           echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
           docker push $DOCKERHUB_URL:$TAG
           docker logout
-  centos8:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Build
-        env:
-          TAG: centos8
-        run: |
-          docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
-          docker image ls
-          echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-          docker push $DOCKERHUB_URL:$TAG
-          docker logout
   ubuntu-14_04:
     runs-on: ubuntu-latest
     steps:
@@ -98,6 +82,22 @@ jobs:
       - name: Build
         env:
           TAG: ubuntu-20.04
+        run: |
+          docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
+          docker image ls
+          echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+          docker push $DOCKERHUB_URL:$TAG
+          docker logout
+  ubuntu-22_04:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Build
+        env:
+          TAG: ubuntu-22.04
         run: |
           docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
           docker image ls

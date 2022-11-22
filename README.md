@@ -9,8 +9,11 @@ running it in production!**
 ## Supported tags
 
 ubuntu:
+* `ubuntu-22.04`
+* `ubuntu-20.04`
 * `ubuntu-18.04`
 * `ubuntu-16.04`
+* `ubuntu-14.04`
 
 centos:
 * `centos7`
@@ -52,12 +55,6 @@ To start a service which requires systemd, configure molecule.yml with a systemd
     groups:
       - debian_family
 ```
-
-## Branching strategy
-
-By default, Docker builds images for each branch in your repository. It assumes the Dockerfile lives at the root of your source. When it builds an image, Docker tags it with the branch name.
-
-We use default behaviour.
 
 License
 -------

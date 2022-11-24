@@ -20,6 +20,8 @@ jobs:
         run: |
           docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
           docker image ls
+          docker run -d $DOCKERHUB_URL:$TAG
+          docker ps -a
   ubuntu-14_04:
     runs-on: ubuntu-latest
     steps:
@@ -46,6 +48,8 @@ jobs:
         run: |
           docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
           docker image ls
+          docker run -d $DOCKERHUB_URL:$TAG
+          docker ps -a
   ubuntu-18_04:
     runs-on: ubuntu-latest
     steps:
@@ -59,6 +63,8 @@ jobs:
         run: |
           docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
           docker image ls
+          docker run -d $DOCKERHUB_URL:$TAG
+          docker ps -a
   ubuntu-20_04:
     runs-on: ubuntu-latest
     steps:
@@ -72,6 +78,8 @@ jobs:
         run: |
           docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
           docker image ls
+          docker run -d $DOCKERHUB_URL:$TAG
+          docker ps -a
   ubuntu-22_04:
     runs-on: ubuntu-latest
     steps:
@@ -85,3 +93,6 @@ jobs:
         run: |
           docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
           docker image ls
+          docker run -d $DOCKERHUB_URL:$TAG
+          docker ps -a
+

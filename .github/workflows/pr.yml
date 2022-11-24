@@ -20,8 +20,9 @@ jobs:
         run: |
           docker build -t $DOCKERHUB_URL:$TAG -f Dockerfile-$TAG .
           docker image ls
-          docker run -d $DOCKERHUB_URL:$TAG
+          docker run -d --privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro --name test-container $DOCKERHUB_URL:$TAG
           docker ps -a
+          docker exec test-container systemctl
   ubuntu-14_04:
     runs-on: ubuntu-latest
     steps:
